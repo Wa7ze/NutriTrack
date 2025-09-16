@@ -25,6 +25,7 @@ def index(request):
 
     # user suggestion starts
     all_users = User.objects.all()
+    user_following = FollowersCount.objects.filter(follower=request.user.username)
     user_following_all = []
 
     for user in user_following:
@@ -47,7 +48,6 @@ def index(request):
         username_profile_list.append(profile_lists)
 
     suggestions_username_profile_list = list(chain(*username_profile_list))
-
 
     return render(request, 'index.html', {'user_profile': user_profile, 'posts':feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
 
