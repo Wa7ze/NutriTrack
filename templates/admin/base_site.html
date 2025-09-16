@@ -1,0 +1,62 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Nutritrack Admin{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        🍎 Nutritrack Admin
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+</div>
+{% endblock %}
+
+{% block nav-global %}
+<div class="admin-nav-extra">
+    <a href="/home" class="btn btn-primary" style="background: #667eea; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; margin-left: 20px;">
+        🏠 Go to Feed
+    </a>
+</div>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+    .admin-nav-extra {
+        float: right;
+        margin-top: 8px;
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+    }
+    
+    .btn:hover {
+        background: #5a6fd8;
+        color: white;
+        text-decoration: none;
+    }
+    
+    #site-name a {
+        color: #417690;
+        text-decoration: none;
+    }
+    
+    #site-name a:hover {
+        color: #205067;
+    }
+</style>
+{% endblock %}
