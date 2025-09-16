@@ -20,19 +20,8 @@ def index(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
 
-    user_following_list = []
-    feed = []
-
-    user_following = FollowersCount.objects.filter(follower=request.user.username)
-
-    for users in user_following:
-        user_following_list.append(users.user)
-
-    for usernames in user_following_list:
-        feed_lists = Post.objects.filter(user=usernames)
-        feed.append(feed_lists)
-
-    feed_list = list(chain(*feed))
+    # Show all posts from all users instead of just followed users
+    feed_list = Post.objects.all().order_by('-created_at')
 
     # user suggestion starts
     all_users = User.objects.all()
@@ -73,9 +62,23 @@ def upload(request):
         new_post = Post.objects.create(user=user, image=image, caption=caption)
         new_post.save()
 
-        return redirect('/')
+        return redirect('/home')
     else:
-        return redirect('/')
+        return redirect('/home')
+
+@login_required(login_url='signin')
+def create_post(request):
+    if request.method == 'POST':
+        user = request.user.username
+        image = request.FILES.get('image_upload')
+        caption = request.POST['caption']
+
+        new_post = Post.objects.create(user=user, image=image, caption=caption)
+        new_post.save()
+
+        return redirect('/home')
+    else:
+        return render(request, 'create_post.html')
 
 @login_required(login_url='signin')
 def search(request):

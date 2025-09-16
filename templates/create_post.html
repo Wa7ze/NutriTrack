@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Post - Nutritrack{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Create New Post</h1>
+            <p class="text-gray-600">Share your delicious food with the community!</p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg p-8">
+            <form method="POST" enctype="multipart/form-data" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Image Upload -->
+                <div class="space-y-2">
+                    <label for="image_upload" class="block text-sm font-medium text-gray-700">
+                        📸 Upload Image
+                    </label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-gray-400 transition-colors">
+                        <div class="space-y-1 text-center">
+                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <div class="flex text-sm text-gray-600">
+                                <label for="image_upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                    <span>Upload a file</span>
+                                    <input id="image_upload" name="image_upload" type="file" class="sr-only" accept="image/*" required>
+                                </label>
+                                <p class="pl-1">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caption -->
+                <div class="space-y-2">
+                    <label for="caption" class="block text-sm font-medium text-gray-700">
+                        💬 Caption
+                    </label>
+                    <textarea id="caption" name="caption" rows="4" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                        placeholder="Tell us about your delicious creation... What's the recipe? How did it taste? Share your food story! 🍽️"
+                        required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-center space-x-4">
+                    <button type="submit" 
+                        class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                        🚀 Share Post
+                    </button>
+                    <a href="/home" 
+                        class="bg-gray-200 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transform hover:scale-105 transition-all duration-200">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="mt-8 bg-white shadow-lg rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">💡 Posting Tips</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                <div class="flex items-start space-x-2">
+                    <span class="text-green-500">✓</span>
+                    <span>Use good lighting for your food photos</span>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="text-green-500">✓</span>
+                    <span>Include ingredients or cooking tips</span>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="text-green-500">✓</span>
+                    <span>Share your personal experience</span>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="text-green-500">✓</span>
+                    <span>Use relevant hashtags in your caption</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
