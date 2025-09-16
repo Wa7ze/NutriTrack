@@ -239,7 +239,10 @@ def signin(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            # Redirect admin users to Django admin page
+            if user.is_superuser or user.is_staff:
+                return redirect('/admin/')
+            return redirect('/home')
         else:
             messages.info(request, 'Credentials Invalid')
             return redirect('signin')

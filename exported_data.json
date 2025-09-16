@@ -1,0 +1,308 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "email": "admin@socialbook.com",
+      "is_staff": true,
+      "is_superuser": true,
+      "is_active": true,
+      "date_joined": "2023-12-26T21:32:40.464352+00:00"
+    },
+    {
+      "username": "Haneen",
+      "email": "haneen@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T13:00:15.590488+00:00"
+    },
+    {
+      "username": "mazen",
+      "email": "mazen@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T13:25:20.278710+00:00"
+    },
+    {
+      "username": "hala",
+      "email": "hala@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T13:45:03.483831+00:00"
+    },
+    {
+      "username": "rasheed",
+      "email": "rasheed@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T13:52:36.593506+00:00"
+    },
+    {
+      "username": "olayan",
+      "email": "olayan@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T13:55:16.073276+00:00"
+    },
+    {
+      "username": "yamen",
+      "email": "yamen@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T13:57:54.780900+00:00"
+    },
+    {
+      "username": "ryan",
+      "email": "ryan@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T14:12:56.405589+00:00"
+    },
+    {
+      "username": "tyseer",
+      "email": "tyseer@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-08T14:24:11.289775+00:00"
+    },
+    {
+      "username": "sara",
+      "email": "sara@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-10T13:29:32.001040+00:00"
+    },
+    {
+      "username": "yaman",
+      "email": "Yaman@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-01-10T13:34:36.097855+00:00"
+    },
+    {
+      "username": "abeer",
+      "email": "abeer@gmail.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_joined": "2024-04-29T14:22:35.452743+00:00"
+    }
+  ],
+  "profiles": [
+    {
+      "user_username": "Haneen",
+      "id_user": 34,
+      "bio": " happy me \ud83c\udf3f",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.17.46_60c66456.jpg"
+    },
+    {
+      "user_username": "mazen",
+      "id_user": 35,
+      "bio": "maz",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.18.54_c745f374.jpg"
+    },
+    {
+      "user_username": "hala",
+      "id_user": 36,
+      "bio": "xoxo",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.20.43_0c6b5d68.jpg"
+    },
+    {
+      "user_username": "rasheed",
+      "id_user": 37,
+      "bio": "Elevate your meals, elevate your life! \ud83c\udf7d\ufe0f\ud83d\udcab",
+      "location": "Istanbul",
+      "profileimg": "profile_images/th_H1GQNnK.jpeg"
+    },
+    {
+      "user_username": "olayan",
+      "id_user": 38,
+      "bio": "life is simple.\ud83d\udc9a",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.18.54_c00e4cb5.jpg"
+    },
+    {
+      "user_username": "yamen",
+      "id_user": 39,
+      "bio": "Tasty, nutritious adventures await! \ud83c\udf72\ud83c\udf1f",
+      "location": "Istanbul",
+      "profileimg": "profile_images/th_1.jpeg"
+    },
+    {
+      "user_username": "ryan",
+      "id_user": 40,
+      "bio": "always in a good mood",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.18.54_c00e4cb5_F2lFgAD.jpg"
+    },
+    {
+      "user_username": "tyseer",
+      "id_user": 41,
+      "bio": "Joyful cooking, joyful living! \ud83c\udf08\ud83c\udf5c",
+      "location": "Istanbul",
+      "profileimg": "profile_images/well-foods-microbiome-videoSixteenByNine3000-v2.jpg"
+    },
+    {
+      "user_username": "sara",
+      "id_user": 42,
+      "bio": "saraa",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.30.16_7a856f3f.jpg"
+    },
+    {
+      "user_username": "yaman",
+      "id_user": 43,
+      "bio": "yaman",
+      "location": "Istanbul",
+      "profileimg": "profile_images/WhatsApp_Image_2024-01-10_at_16.35.08_08cadb6b.jpg"
+    },
+    {
+      "user_username": "abeer",
+      "id_user": 44,
+      "bio": "abeer",
+      "location": "istanbul",
+      "profileimg": "profile_images/IMG-20240425-WA0064.jpg"
+    },
+    {
+      "user_username": "admin",
+      "id_user": 1,
+      "bio": "Administrator",
+      "location": "System",
+      "profileimg": "blank-profile-picture.png"
+    }
+  ],
+  "posts": [
+    {
+      "id": "f3972d12-8c4b-43d2-89da-755eda645993",
+      "user": "hala",
+      "image": "post_images/uskudar-universitesi-nden-izmirli-174-ogrencisine-destek.jpeg",
+      "caption": "uskudar university",
+      "created_at": "2024-01-10T15:40:01.343412+00:00",
+      "no_of_likes": 0
+    },
+    {
+      "id": "93d18f9e-1c9d-4487-a382-306c93e4524a",
+      "user": "Haneen",
+      "image": "post_images/WhatsApp_Image_2024-01-10_at_16.17.46_60c66456.jpg",
+      "caption": "hi there",
+      "created_at": "2024-01-10T16:19:50.920275+00:00",
+      "no_of_likes": 0
+    },
+    {
+      "id": "2a74204f-3b59-40a6-96b3-261f43704d78",
+      "user": "hala",
+      "image": "post_images/WhatsApp_Image_2024-01-10_at_16.17.28_d8b4cee2.jpg",
+      "caption": "presentation day!!\r\n",
+      "created_at": "2024-01-10T16:21:18.261325+00:00",
+      "no_of_likes": 0
+    },
+    {
+      "id": "d32523de-957c-4004-b64a-b0fb7820131e",
+      "user": "hala",
+      "image": "post_images/WhatsApp_Image_2024-01-10_at_16.20.43_0c6b5d68.jpg",
+      "caption": "hii\r\n",
+      "created_at": "2024-01-10T16:22:23.309396+00:00",
+      "no_of_likes": 0
+    },
+    {
+      "id": "5ce03966-59bb-4865-825c-c22cf6e93d4d",
+      "user": "mazen",
+      "image": "post_images/WhatsApp_Image_2024-01-10_at_16.18.54_c00e4cb5.jpg",
+      "caption": "hello",
+      "created_at": "2024-01-10T16:24:29.940873+00:00",
+      "no_of_likes": 0
+    },
+    {
+      "id": "1c939eaf-c1a7-477a-b1f2-8f4b16447b0f",
+      "user": "sara",
+      "image": "post_images/WhatsApp_Image_2024-01-10_at_16.30.16_7a856f3f.jpg",
+      "caption": "it is mee",
+      "created_at": "2024-01-10T16:31:46.129748+00:00",
+      "no_of_likes": 1
+    }
+  ],
+  "likes": [
+    {
+      "post_id": "02ef92f9-0d37-4a48-853b-e368ca4c6b63",
+      "username": "rasheed"
+    },
+    {
+      "post_id": "ad9ff29c-d151-4658-9079-3877668a7455",
+      "username": "rasheed"
+    },
+    {
+      "post_id": "1c939eaf-c1a7-477a-b1f2-8f4b16447b0f",
+      "username": "Haneen"
+    }
+  ],
+  "followers": [
+    {
+      "follower": "Haneen",
+      "user": "mazen"
+    },
+    {
+      "follower": "hala",
+      "user": "mazen"
+    },
+    {
+      "follower": "Haneen",
+      "user": "hala"
+    },
+    {
+      "follower": "mazen",
+      "user": "Haneen"
+    },
+    {
+      "follower": "mazen",
+      "user": "hala"
+    },
+    {
+      "follower": "rasheed",
+      "user": "hala"
+    },
+    {
+      "follower": "yamen",
+      "user": "hala"
+    },
+    {
+      "follower": "rasheed",
+      "user": "Haneen"
+    },
+    {
+      "follower": "hala",
+      "user": "Haneen"
+    },
+    {
+      "follower": "Haneen",
+      "user": "sara"
+    },
+    {
+      "follower": "Haneen",
+      "user": "yamen"
+    },
+    {
+      "follower": "Haneen",
+      "user": "tyseer"
+    },
+    {
+      "follower": "Haneen",
+      "user": "rasheed"
+    },
+    {
+      "follower": "abeer",
+      "user": "Haneen"
+    }
+  ]
+}
