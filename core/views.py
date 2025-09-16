@@ -86,10 +86,11 @@ def search(request):
     user_profile = Profile.objects.get(user=user_object)
 
     username_profile_list = []
+    search_query = ""
 
     if request.method == 'POST':
-        username = request.POST['username']
-        username_object = User.objects.filter(username__icontains=username)
+        search_query = request.POST['username']
+        username_object = User.objects.filter(username__icontains=search_query)
 
         username_profile = []
 
@@ -102,7 +103,7 @@ def search(request):
         
         username_profile_list = list(chain(*username_profile_list))
     
-    return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+    return render(request, 'search_results.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list, 'search_query': search_query})
 
 @login_required(login_url='signin')
 def like_post(request):

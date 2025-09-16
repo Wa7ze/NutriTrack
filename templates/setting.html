@@ -1,144 +1,398 @@
-{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Settings - Nutritrack{% endblock %}
-
-{% block content %}
-
-
-       
-
-          
-
-            <div class="container m-auto"> 
-
-                <h1 class="text-2xl leading-none text-gray-900 tracking-tight mt-3"><a href="/">Home</a> / Account Setting for <b>{{user.username}}</b> </h1>
-                <!-- <ul class="mt-5 -mr-3 flex-nowrap lg:overflow-hidden overflow-x-scroll uk-tab">
-                    <li class="uk-active"><a href="#">General</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Notification</a></li>
-                    <li><a href="#">Social links</a></li>
-                    <li><a href="#">Billing</a></li>
-                    <li><a href="#">Security</a></li>
-                </ul> -->
-                <br>
-                <hr>
-                <div class="grid lg:grid-cols-3 mt-12 gap-8">
-                    <div>
-                        <h3 class="text-xl mb-2"> General</h3>
-                        <p></p>
-                    </div>
-                    <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
-                        
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                       <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
-                           
-                           
-                            <div class="col-span-2">
-                                <label for=""> Profile Image</label>
-                                <img width="100" height="100" src="{{user_profile.profileimg.url}}" />
-                                <input type="file" name="image" value="" class="shadow-none bg-gray-100">
-                            </div>
-                            <div class="col-span-2">
-                                <label for="about">Bio</label>  
-                                <textarea id="about" name="bio" rows="3"  class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
-                            </div> 
-                            <div class="col-span-2">
-                                <label for=""> Location</label>
-                                <input type="text" name="location" value="{{user_profile.location}}" class="shadow-none bg-gray-100">
-                            </div>
-                            
-                       </div> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Nutritrack</title>
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-                       <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
-                           <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> <a href="/">Cancel</a> </button>
-                           <button id="save_button" type="submit" class="button bg-blue-700"> Save </button>
-                       </div>
-                    </form>
-    
-                    </div>
-
-                    <!-- <div>
-                        <h3 class="text-xl mb-2"> Privacy</h3>
-                        <p> </p>
-                    </div>
-                    <div class="bg-white rounded-md lg:shadow-lg shadow lg:p-6 p-4 col-span-2">
-
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h4> Who can follow me ?</h4>
-                                <div>  </div>
-                            </div>
-                            <div class="switches-list -mt-8 is-large">
-                                <div class="switch-container">
-                                    <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h4> Show my activities ?</h4>
-                                <div>  </div>
-                            </div>
-                            <div class="switches-list -mt-8 is-large">
-                                <div class="switch-container">
-                                    <label class="switch"><input type="checkbox" checked><span class="switch-button"></span> </label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h4> Search engines?</h4>
-                                <div>  </div>
-                            </div>
-                            <div class="switches-list -mt-8 is-large">
-                                <div class="switch-container">
-                                    <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h4> Allow Commenting?</h4>
-                                <div>  </div>
-                            </div>
-                            <div class="switches-list -mt-8 is-large">
-                                <div class="switch-container">
-                                    <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-    
-                    </div>
-                    <br>
-
-                </div>
-
-            </div>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-container {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .settings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .settings-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .settings-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        
+        .settings-subtitle {
+            font-size: 16px;
+            color: #64748b;
+        }
+        
+        .settings-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: #a0aec0;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .file-upload input[type=file] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .file-upload-label:hover {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        
+        .upload-icon {
+            width: 24px;
+            height: 24px;
+            color: #9ca3af;
+        }
+        
+        .upload-text {
+            color: #6b7280;
+            font-size: 16px;
+        }
+        
+        .current-image {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .current-image img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .current-image-text {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 2px solid #e2e8f0;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .error-message {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border: 1px solid #feb2b2;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border: 1px solid #a7f3d0;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-container {
+                margin-left: 0;
+                padding: 20px 10px;
+            }
             
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Persistent Header -->
+    <header class="persistent-header" style="position: fixed; top: 0; left: 0; width: 250px; height: 100vh; background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%); color: white; padding: 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
+        <div class="header-logo" style="font-size: 24px; font-weight: bold; text-decoration: none; color: white; margin-bottom: 30px;">
+            <a href="/home" style="color: white; text-decoration: none;">Nutritrack</a>
         </div>
+        
+        <div class="header-nav" style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px; margin-bottom: 30px; width: 100%;">
+            <a href="/home" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Home</a>
+            <a href="/create-post" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Make Post</a>
+            <a href="/search" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Search</a>
+            <a href="/settings" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Settings</a>
+        </div>
+        
+        <div class="header-user" style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px; margin-top: auto; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="{{ user_profile.profileimg.url }}" alt="{{ user.username }}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+                <span style="color: white; font-weight: 500;">{{ user.username }}</span>
+            </div>
+            <a href="/logout" style="background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: background 0.3s ease;">Logout</a>
+        </div>
+    </header>
 
+    <div class="main-container">
+        <div class="settings-container">
+            <!-- Settings Header -->
+            <div class="settings-header">
+                <h1 class="settings-title">Account Settings</h1>
+                <p class="settings-subtitle">Manage your profile and account preferences</p>
+            </div>
+
+            <!-- Settings Form -->
+            <div class="settings-form">
+                <!-- Error Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="error-message">{{ message }}</div>
+                        {% else %}
+                            <div class="success-message">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <!-- Profile Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Profile Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="fname" class="form-label">First Name</label>
+                            <input id="fname" name="fname" type="text" class="form-input" value="{{ user_profile.user.first_name }}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lname" class="form-label">Last Name</label>
+                            <input id="lname" name="lname" type="text" class="form-input" value="{{ user_profile.user.last_name }}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio" class="form-label">Bio</label>
+                            <textarea id="bio" name="bio" class="form-textarea" placeholder="Tell us about yourself and your nutrition journey...">{{ user_profile.bio }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Profile Picture -->
+                    <div class="form-section">
+                        <h2 class="section-title">Profile Picture</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Current Profile Picture</label>
+                            <div class="current-image">
+                                <img src="{{ user_profile.profileimg.url }}" alt="Current profile picture">
+                                <span class="current-image-text">Current profile picture</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Upload New Picture</label>
+                            <div class="file-upload">
+                                <input type="file" name="image" accept="image/*" id="profile-image">
+                                <label for="profile-image" class="file-upload-label">
+                                    <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                    </svg>
+                                    <span class="upload-text">Click to upload new profile picture</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div class="form-section">
+                        <h2 class="section-title">Account Settings</h2>
+                        
+                        <div class="form-group">
+                            <label for="location" class="form-label">Location</label>
+                            <input id="location" name="location" type="text" class="form-input" value="{{ user_profile.location }}" placeholder="Where are you from?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="website" class="form-label">Website</label>
+                            <input id="website" name="website" type="url" class="form-input" value="{{ user_profile.website }}" placeholder="https://yourwebsite.com">
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                        <a href="/profile/{{ user.username }}" class="btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-
-    
-
- <!-- Scripts
-    ================================================== -->
-    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>  
-    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'assets/js/uikit.js' %}"></script>
-    <script src="{% static 'assets/js/simplebar.js' %}"></script>
-    <script src="{% static 'assets/js/custom.js' %}"></script>
-
-
-    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
-
-{% endblock %}
+</body>
+</html>

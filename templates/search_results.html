@@ -1,0 +1,330 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Nutritrack</title>
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-container {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .search-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: #a0aec0;
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .results-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .results-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .results-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        
+        .user-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .user-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .user-item:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e2e8f0;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-username {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .user-username:hover {
+            color: #10b981;
+        }
+        
+        .user-name {
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .profile-btn {
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .profile-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+        }
+        
+        .follow-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 2px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .follow-btn:hover {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+            transform: translateY(-2px);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+        
+        .empty-state h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+        
+        .empty-state p {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+        
+        .back-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 2px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 1024px) {
+            .main-container {
+                margin-left: 0;
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Persistent Header -->
+    <header class="persistent-header" style="position: fixed; top: 0; left: 0; width: 250px; height: 100vh; background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%); color: white; padding: 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
+        <div class="header-logo" style="font-size: 24px; font-weight: bold; text-decoration: none; color: white; margin-bottom: 30px;">
+            <a href="/home" style="color: white; text-decoration: none;">Nutritrack</a>
+        </div>
+        
+        <div class="header-nav" style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px; margin-bottom: 30px; width: 100%;">
+            <a href="/home" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Home</a>
+            <a href="/create-post" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Make Post</a>
+            <a href="/search" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Search</a>
+            <a href="/settings" style="color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; font-weight: 500;">Settings</a>
+        </div>
+        
+        <div class="header-user" style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px; margin-top: auto; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="{{ user_profile.profileimg.url }}" alt="{{ user.username }}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+                <span style="color: white; font-weight: 500;">{{ user.username }}</span>
+            </div>
+            <a href="/logout" style="background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: background 0.3s ease;">Logout</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Search Header -->
+        <div class="search-header">
+            <a href="/home" class="back-btn">← Back to Feed</a>
+            <h1 class="search-title">Search Users</h1>
+            <form action="/search" method="POST" class="search-form">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Search for users..." class="search-input" value="{{ search_query|default:'' }}" required>
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </div>
+
+        <!-- Search Results -->
+        <div class="results-container">
+            <div class="results-card">
+                <h2 class="results-title">
+                    {% if search_query %}
+                        Search Results for "{{ search_query }}"
+                    {% else %}
+                        Search Results
+                    {% endif %}
+                </h2>
+                
+                {% if username_profile_list %}
+                    <div class="user-list">
+                        {% for user_profile in username_profile_list %}
+                        <div class="user-item">
+                            <img src="{{ user_profile.profileimg.url }}" alt="{{ user_profile.user.username }}" class="user-avatar">
+                            <div class="user-info">
+                                <a href="/profile/{{ user_profile.user.username }}" class="user-username">@{{ user_profile.user.username }}</a>
+                                <div class="user-name">{{ user_profile.user.first_name }} {{ user_profile.user.last_name }}</div>
+                            </div>
+                            <div class="user-actions">
+                                <a href="/profile/{{ user_profile.user.username }}" class="profile-btn">View Profile</a>
+                                <a href="/follow?user={{ user_profile.user.username }}" class="follow-btn">Follow</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <h3>No users found</h3>
+                        <p>Try searching with a different username or check your spelling.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
