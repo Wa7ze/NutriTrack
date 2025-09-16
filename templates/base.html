@@ -19,15 +19,17 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 250px;
+            height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
             z-index: 1000;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
         }
         
         .header-logo {
@@ -39,8 +41,11 @@
         
         .header-nav {
             display: flex;
-            align-items: center;
-            gap: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 30px;
+            width: 100%;
         }
         
         .header-nav a {
@@ -59,8 +64,11 @@
         
         .header-user {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 15px;
+            margin-top: auto;
+            width: 100%;
         }
         
         .header-avatar {
@@ -72,8 +80,9 @@
         }
         
         .main-content {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 20px;
         }
         
         .btn-primary {
@@ -154,9 +163,9 @@
     {% if not request.resolver_match.url_name == 'admin:index' and not 'admin' in request.path %}
     <!-- Persistent Header -->
     <header class="persistent-header">
-        <div class="header-left">
-            <a href="{% if user.is_authenticated %}/home{% else %}/{% endif %}" class="header-logo">
-                🍎 Nutritrack
+        <div class="header-logo">
+            <a href="{% if user.is_authenticated %}/home{% else %}/{% endif %}" style="color: white; text-decoration: none;">
+                Nutritrack
             </a>
         </div>
         
@@ -173,10 +182,10 @@
         
         <div class="header-user">
             {% if user.is_authenticated %}
-                <a href="/profile/{{ user.username }}" class="header-nav">
+                <div style="display: flex; align-items: center; gap: 10px;">
                     <img src="{{ user_profile.profileimg.url }}" alt="{{ user.username }}" class="header-avatar">
                     <span>{{ user.username }}</span>
-                </a>
+                </div>
                 <a href="/logout" class="btn-secondary">Logout</a>
             {% endif %}
         </div>
